@@ -14,6 +14,11 @@ const sequelize = new Sequelize("test", "victorkauan", "12345678", {
   dialect: "mysql"
 });
 
+// ROUTES
+app.get("/register", function(req, res) {
+  res.render("form");
+});
+
 app.listen(1300, function() {
   console.log("Server is running on url http://localhost:1300!");
 });
