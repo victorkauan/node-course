@@ -19,6 +19,10 @@ app.get("/register", function(req, res) {
   res.render("form");
 });
 
+app.post("/add", function(req, res) {
+  res.send("Form received!");
+});
+
 app.listen(1300, function() {
   console.log("Server is running on url http://localhost:1300!");
 });
