@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
+const bodyParser = require("body-parser");
 const Sequelize = require("sequelize");
 
 // CONFIGURATIONS
@@ -14,13 +15,17 @@ const sequelize = new Sequelize("test", "victorkauan", "12345678", {
   dialect: "mysql"
 });
 
+// bodyParser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // ROUTES
 app.get("/register", function(req, res) {
   res.render("form");
 });
 
 app.post("/add", function(req, res) {
-  res.send("Form received!");
+  res.send("Title: " + req.body.title + " Content: " + req.body.content);
 });
 
 app.listen(1300, function() {
