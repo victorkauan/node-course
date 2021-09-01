@@ -10,6 +10,6 @@ const Post = db.sequelize.define("posts", {
 });
 
 // Comment the following line after creating the table
-Post.sync({ force: true });
+// Post.sync({ force: true });
 
 module.exports = Post;
