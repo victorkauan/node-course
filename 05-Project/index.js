@@ -37,6 +37,16 @@ app.post("/add", function (req, res) {
     });
 });
 
+app.get("/delete/:id", function (req, res) {
+  Post.destroy({ where: { id: req.params.id } })
+    .then(function () {
+      res.send("Post successfully deleted!");
+    })
+    .catch(function (erro) {
+      res.send("An error has occurred: This post doesn't exist!");
+    });
+});
+
 app.listen(1300, function () {
-  console.log("Server is running on url http://localhost:1300!");
+  console.log("Server is running on url http://localhost:1300");
 });
