@@ -14,39 +14,39 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // ROUTES
-app.get("/", function (req, res) {
-  Post.findAll({ order: [["id", "DESC"]] }).then(function (posts) {
+app.get("/", (req, res) => {
+  Post.findAll({ order: [["id", "DESC"]] }).then((posts) => {
     res.render("home", { posts: posts, name: "teste" });
   });
 });
 
-app.get("/register", function (req, res) {
+app.get("/register", (req, res) => {
   res.render("form");
 });
 
-app.post("/add", function (req, res) {
+app.post("/add", (req, res) => {
   Post.create({
     title: req.body.title,
     content: req.body.content,
   })
-    .then(function () {
+    .then(() => {
       res.redirect("/");
     })
-    .catch(function (erro) {
+    .catch((erro) => {
       res.send("An error has occurred: " + erro + ".");
     });
 });
 
-app.get("/delete/:id", function (req, res) {
+app.get("/delete/:id", (req, res) => {
   Post.destroy({ where: { id: req.params.id } })
-    .then(function () {
+    .then(() => {
       res.send("Post successfully deleted!");
     })
-    .catch(function (erro) {
+    .catch((erro) => {
       res.send("An error has occurred: This post doesn't exist!");
     });
 });
 
-app.listen(1300, function () {
+app.listen(1300, () => {
   console.log("Server is running on url http://localhost:1300");
 });

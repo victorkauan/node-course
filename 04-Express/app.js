@@ -1,19 +1,19 @@
 const express = require("express");
 const app = express();
 
-app.get("/", function(req, res) {
+app.get("/", (req, res) => {
   res.sendFile(__dirname + "/html/index.html");
 });
 
-app.get("/about", function(req, res) {
+app.get("/about", (req, res) => {
   res.sendFile(__dirname + "/html/about.html");
 });
 
-app.get("/blog", function(req, res) {
+app.get("/blog", (req, res) => {
   res.send("Welcome to my blog!");
 });
 
-app.get("/hello/:name/:profession/:color", function(req, res) {
+app.get("/hello/:name/:profession/:color", (req, res) => {
   res.send(
     "<h1>Hello, " +
       req.params.name +
@@ -27,6 +27,6 @@ app.get("/hello/:name/:profession/:color", function(req, res) {
   );
 });
 
-app.listen(1300, function() {
+app.listen(1300, () => {
   console.log("Server is running on URL http://localhost:1300");
 });
