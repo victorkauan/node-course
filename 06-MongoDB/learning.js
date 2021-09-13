@@ -11,3 +11,49 @@ mongoose
   .catch((err) => {
     console.log("There was an error connecting to MongoDB: " + err);
   });
+
+// USER MODEL
+// Defining the model
+const UserSchema = mongoose.Schema({
+  firstName: {
+    type: String,
+    require: true,
+  },
+  lastName: {
+    type: String,
+    require: true,
+  },
+  email: {
+    type: String,
+    require: true,
+  },
+  age: {
+    type: Number,
+    require: true,
+  },
+  country: {
+    type: String,
+  },
+});
+
+// Determining the model collection
+mongoose.model("users", UserSchema);
+
+// Creating a reference
+const User = mongoose.model("users");
+
+// Creating a document
+new User({
+  firstName: "Victor",
+  lastName: "Kauan",
+  email: "victorkauan@email.com",
+  age: 20,
+  country: "Brazil",
+})
+  .save()
+  .then(() => {
+    console.log("User successfully registered!");
+  })
+  .catch((err) => {
+    console.log("There was an error registering the user: " + err);
+  });
